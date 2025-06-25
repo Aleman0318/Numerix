@@ -1,1 +1,1 @@
-web: gunicorn numerix.wsgi
+web: gunicorn Numerix.wsgi
