@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado Lagrange (Prueba)</title>
+    <link rel="icon" type="image/png" href="{% static 'login/images/favicon.png' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'login/css/style.css' %}" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"
+        defer></script>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fondo-navbar-azul">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active fuente-parrafos2 color-text-blanco mt-1 animacion-color-txt"
+                            href="{% url 'creditos_prueba' %}">Creditos</a>
+                    </li>
+                    <li class="nav-item dropdown fuente-parrafos2 color-text-blanco mt-1 animacion-color-txt">
+                        <a class="nav-link dropdown-toggle color-text-blanco animacion-color-txt" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Métodos Numéricos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'lagrange_prueba' %}">Interpolación de
+                                    Lagrange</a></li>
+                            <li><a class="dropdown-item" href="{% url 'trazadores_prueba' %}">Trazadores Cúbicos</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'documentacion_prueba' %}">Documentación</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex" role="">
+                    <a class="nav-link active fuente-parrafos2 color-text-blanco mt-1 animacion-color-txt"
+                        aria-current="page" href="{% url 'inicio' %}">Terminar Prueba</a>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="containerAccounts mt-5 shadow p-4 m-auto">
+        <h1 class="text-center fuente-titulos2 color-text-negro mb-4">Resultado - Lagrange (Prueba)</h1>
+
+        <p class="text-center fuente-parrafos2"><strong>Valores de X:</strong> {{ x_vals }}</p>
+        <p class="text-center fuente-parrafos2"><strong>Valores de Y:</strong> {{ y_vals }}</p>
+
+        <div class="text-center mt-4 alert alert-success">
+            <h5 class="fuente-parrafos2 color-text-negro">Polinomio resultante:</h5>
+            <p class="fs-5">$$ {{ resultado }} $$</p>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{% url 'lagrange_prueba' %}" class="btn btn-outline-primary">Nuevo Ejercicio</a>
+        </div>
+    </div>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</body>
+
+</html>

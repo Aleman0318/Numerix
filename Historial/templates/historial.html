@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Ejercicios</title>
+    <link rel="icon" type="image/png" href="{% static 'login/images/favicon.png' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{% static 'login/css/style.css' %}">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fondo-navbar-azul mb-5">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active fuente-parrafos2 color-text-blanco mt-1 animacion-color-txt"
+                            href="{% url 'ver_creditos' %}">Creditos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active fuente-parrafos2 color-text-blanco mt-1 animacion-color-txt"
+                            href="{% url 'ver_historial' %}">Historial</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active fuente-parrafos2 color-text-blanco mt-1 animacion-color-txt"
+                            href="{% url 'ver_perfil' %}">Perfil</a>
+                    </li>
+                    <li class="nav-item dropdown fuente-parrafos2 color-text-blanco mt-1 animacion-color-txt">
+                        <a class="nav-link dropdown-toggle color-text-blanco animacion-color-txt" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Métodos Numéricos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'formulario_lagrange' %}">Interpolación de
+                                    Lagrange</a></li>
+                            <li><a class="dropdown-item" href="{% url 'formulario_trazadores' %}">Trazadores Cúbicos</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'documentacion_metodos' %}">Documentación</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex" role="">
+                    <a class="nav-link active fuente-parrafos2 color-text-blanco mt-1 animacion-color-txt"
+                        aria-current="page" href="{% url 'logout' %}">Cerrar Sesión</a>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="containerAccounts m-auto p-4 shadow">
+        <h1 class="fuente-titulos2 text-center color-text-negro">Historial de Ejercicios</h1>
+        {% if historial %}
+        {% for item in historial %}
+        <div class="card my-4 bg-light">
+            <div class="card-body">
+                <h5 class="card-title fuente-parrafos2 fw-bold">Método: {{ item.get_metodo_display }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted fuente-parrafos2">Fecha: {{ item.fecha|date:"d/m/Y H:i" }}</h6>
+
+                {% if item.grafica_url %}
+                <img src="{{ item.grafica_url }}" class="img-fluid rounded mt-3" alt="Gráfica generada">
+                {% endif %}
+
+                <button class="btn btn-primary mt-3" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#pasos{{ forloop.counter }}">
+                    Ver pasos
+                </button>
+                <div class="collapse mt-3" id="pasos{{ forloop.counter }}">
+                    <div class="card card-body bg-white">
+                        {% for paso in item.pasos %}
+                        {% if paso.tipo == "texto" %}
+                        <p class="mb-1 fuente-parrafos1 text-dark text-center color-text-rojo2">{{ paso.contenido }}</p>
+                        {% elif paso.tipo == "formula" %}
+                        <div class="contenedor-formula text-dark">
+                            <p>$$ {{ paso.contenido }} $$</p>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p class="text-center fuente-parrafos2 mt-4">Aún no has realizado ningún ejercicio.</p>
+        {% endif %}
+    </div>
+
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <button onclick="irArriba()" id="btnArriba" class="btn btn-danger rounded-circle">↑</button>
+    <script>
+        window.onscroll = function () {
+            const boton = document.getElementById("btnArriba");
+            boton.style.display = (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) ? "block" : "none";
+        };
+
+        function irArriba() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    </script>
+
+</body>
+
+</html>

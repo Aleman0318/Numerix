@@ -1,0 +1,451 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentación Métodos Numéricos</title>
+    <link rel="icon" type="image/png" href="{% static 'lagrange/images/favicon.png' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'lagrange/css/style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"
+        defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body class="animacion-aparicion fondo-franjas-rojas">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fondo-navbar fixed-top mb-5 shadow">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active fuente-parrafos2 color-text-blanco mt-1 animacion-color-txt"
+                            aria-current="page" href="{% url 'ver_creditos' %}">Creditos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active fuente-parrafos2 color-text-blanco mt-1 animacion-color-txt"
+                            aria-current="page" href="{% url 'ver_historial' %}">Historial</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active fuente-parrafos2 color-text-blanco mt-1 animacion-color-txt"
+                            aria-current="page" href="{% url 'ver_perfil' %}">Perfil</a>
+                    </li>
+                    <li class="nav-item dropdown fuente-parrafos2 color-text-blanco mt-1 animacion-color-txt">
+                        <a class="nav-link dropdown-toggle color-text-blanco animacion-color-txt" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Métodos Numéricos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'formulario_lagrange' %}">Interpolación de
+                                    Lagrange</a></li>
+                            <li><a class="dropdown-item" href="{% url 'formulario_trazadores' %}">Trazadores Cúbicos</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'documentacion_metodos' %}">Documentación</a></li>
+                        </ul>
+
+                    </li>
+                </ul>
+                <form class="d-flex" role="">
+                    <a class="nav-link active fuente-parrafos2 color-text-blanco mt-1 animacion-color-txt"
+                        aria-current="page" href="{% url 'logout' %}">Cerrar Sesión</a>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5 p-4 shadow rounded bg-light bg-opacity-50">
+
+        <div class="p-3 mt-5">
+            <h1 class="fuente-titulos2 mt-5 color-text-rojo2 text-center">Bienvenido a Numerix</h1>
+        </div>
+        <div class="p-3">
+            <p class="fuente-semititulos">Una plataforma interactiva diseñada para ayudarte a resolver
+                problemas de análisis numérico de forma intuitiva, visual y guiada. En esta aplicación podrás trabajar
+                con
+                métodos fundamentales muy conocidos, como lo son:</p>
+        </div>
+        <ul class="p-4">
+
+            <li class="mt-3">
+                <p class="d-inline fuente-parrafos1 color-text-negro fw-bolder">Interpolación de Lagrange:</p>
+                <p class="d-inline fuente-parrafos1 color-text-negro"> Aprende a construir polinomios que pasan
+                    exactamente
+                    por un conjunto de puntos dados.</p>
+            </li>
+            <li class="mt-3">
+                <p class="d-inline fuente-parrafos1 color-text-negro fw-bolder">Trazadores Cúbicos:</p>
+                <p class="d-inline fuente-parrafos1 color-text-negro"> Genera funciones suaves que conectan tus puntos
+                    mediante
+                    curvas naturales.</p>
+            </li>
+            <li class="mt-3">
+                <p class="d-inline fuente-parrafos1 color-text-negro fw-bolder">(Y más métodos próximamente...)</p>
+            </li>
+
+        </ul>
+
+        <div class="mt-5 p-3 fuente-parrafos1 color-text-negro">
+            <p>Para continuar, nos es necesario, primero conocer acerca de: ¿qué son los métodos numéricos?.</p>
+            <p>¿alguna idea?, no te preocupes aca te explicaremos detalladamente que son, como se comen y como se
+                resuelven
+                esos problemas que aparentan ser imposibles 😉</p>
+        </div>
+
+        <div class="container-fluid justify-content-center text-center fuente-semititulos mt-5">
+            <p>¿Qué son los métodos numéricos?</p>
+        </div>
+
+        <div class="p-3">
+            <p class="d-inline fuente-parrafos1 color-text-negro text-justify">Los métodos numéricos son un conjunto de
+                técnicas
+                matemáticas que se utilizan para encontrar soluciones
+                aproximadas (pero muy precisas) a problemas matemáticos que no pueden resolverse fácilmente de forma
+                exacta
+                o analítica.
+            </p>
+            <p class="d-inline fuente-parrafos1 color-text-negro text-justify">
+                En el contexto de análisis numérico, estos métodos permiten resolver ecuaciones, derivar, integrar,
+                interpolar, aproximar funciones, entre otros, utilizando algoritmos computacionales.
+            </p>
+        </div>
+        <div class="p-3">
+            <p class="d-inline fuente-parrafos1 color-text-negro text-justify">
+                ¿Por que son importantes?, porque muchos problemas reales no tienen soluciones exactas (o son muy
+                difíciles
+                de obtener) y deben resolverse usando aproximaciones mediante computadoras.
+            </p>
+        </div>
+
+        <div class="container-fluid justify-content-center text-center fuente-semititulos mt-5">
+            <p>Historia</p>
+        </div>
+
+        <div class="container my-4">
+
+            <div class="row row-cols-1 row-cols-md-2 g-5">
+
+                <div class="col">
+                    <div class="card h-100 shadow">
+                        <img src="{% static 'lagrange/images/antiguedad.png' %}" class="card-img-top"
+                            alt="Origen antiguo">
+                        <div class="card-body">
+                            <p class="d-inline fuente-parrafos1 color-text-negro fw-bolder">Origen antiguo:</p>
+                            <p class="d-inline fuente-parrafos1 color-text-negro">
+                                Los métodos numéricos tienen raíces en civilizaciones antiguas como Babilonia, Egipto y
+                                Grecia, donde se usaban algoritmos básicos para resolver problemas matemáticos como
+                                raíces
+                                cuadradas, ecuaciones lineales y cálculo de áreas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 shadow">
+                        <img src="{% static 'lagrange/images/edad-media.jpeg' %}" class="card-img-top" alt="Edad Media">
+                        <div class="card-body">
+                            <p class="d-inline fuente-parrafos1 color-text-negro fw-bolder">Desarrollo en la Edad Media:
+                            </p>
+                            <p class="d-inline fuente-parrafos1 color-text-negro">
+                                Matemáticos islámicos como Al-Khwarizmi desarrollaron técnicas algebraicas que
+                                influyeron en
+                                la resolución numérica de ecuaciones, sentando bases que influenciarían a Europa
+                                posteriormente.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 shadow">
+                        <img src="{% static 'lagrange/images/revolucion-cientifica.jpg' %}" class="card-img-top"
+                            alt="Revolución científica">
+                        <div class="card-body">
+                            <p class="d-inline fuente-parrafos1 color-text-negro fw-bolder">Revolución científica:</p>
+                            <p class="d-inline fuente-parrafos1 color-text-negro">
+                                Durante los siglos XVII y XVIII, con Newton y Leibniz, el cálculo infinitesimal impulsó
+                                la
+                                necesidad de métodos para resolver ecuaciones diferenciales y series numéricas, lo cual
+                                marcó una evolución clave.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 shadow">
+                        <img src="{% static 'lagrange/images/era-computacional.jpg' %}" class="card-img-top"
+                            alt="Era computacional">
+                        <div class="card-body">
+                            <p class="d-inline fuente-parrafos1 color-text-negro fw-bolder">Era computacional:</p>
+                            <p class="d-inline fuente-parrafos1 color-text-negro">
+                                En el siglo XX, el desarrollo de computadoras electrónicas permitió implementar métodos
+                                numéricos con rapidez y precisión, volviéndolos fundamentales en ingeniería, física,
+                                economía y más.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row justify-content-center mt-4 mb-5">
+                <div class="col-md-6">
+                    <div class="card h-100 shadow">
+                        <img src="{% static 'lagrange/images/era-actual.jpg' %}" class="card-img-top" alt="Actualidad">
+                        <div class="card-body">
+                            <p class="d-inline fuente-parrafos1 color-text-negro fw-bolder">Actualidad:</p>
+                            <p class="d-inline fuente-parrafos1 color-text-negro">
+                                Hoy en día, los métodos numéricos son esenciales para resolver problemas complejos en
+                                ciencia de datos, simulaciones científicas y tecnología avanzada. Se enseñan en
+                                universidades como herramientas clave para el análisis computacional.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MÉTODO DE LAGRANGE -->
+        <div class="container-fluid justify-content-center text-center fuente-titulos2 color-text-negro mt-5">
+            <p>Metodo de Interpolacion de Lagrange</p>
+        </div>
+
+        <div class="p-3 mt-3">
+            <p class="fuente-parrafos1 color-text-negro text-justify">
+                El método de interpolación de Lagrange es una técnica matemática para construir un polinomio único que
+                pase exactamente por un conjunto dado de puntos. Es decir, si se conocen ciertos valores de una función
+                en puntos específicos, se puede crear un polinomio que los interpole, permitiendo estimar el valor de la
+                función en otros puntos intermedios.
+            </p>
+            <p class="fuente-parrafos1 color-text-negro text-justify">
+                Este método es especialmente útil cuando no se conoce la función original pero sí se dispone de algunos
+                valores concretos. Utiliza los llamados "polinomios básicos de Lagrange" \( L_i(x) \), que están
+                diseñados para anularse en todos los puntos menos en uno, facilitando así que cada término del polinomio
+                general represente exactamente un punto conocido.
+            </p>
+        </div>
+
+        <div class="p-3 text-center">
+            <p class="fuente-parrafos1 color-text-negro fw-bolder">¿Cómo funciona?</p>
+            <p class="fuente-parrafos1 color-text-negro">
+                Se construye un polinomio de grado \( n \), utilizando una combinación de términos que involucran
+                productos de fracciones. Cada término garantiza que el polinomio pase por su correspondiente punto \(
+                (x_i, y_i) \).
+            </p>
+            <p class="fuente-parrafos1 color-text-negro mt-4">
+                \[
+                P(x) = \sum_{i=0}^{n} y_i \cdot L_i(x)
+                \quad \text{donde} \quad
+                L_i(x) = \prod_{\substack{j=0 \\ j \neq i}}^{n} \frac{(x - x_j)}{(x_i - x_j)}
+                \]
+            </p>
+        </div>
+
+        <!-- VENTAJAS Y DESVENTAJAS - LAGRANGE -->
+        <div class="container text-center mt-5">
+            <h4 class="fuente-semititulos color-text-rojo2">Ventajas y Desventajas</h4>
+            <div class="table-responsive mt-4">
+                <table class="table table-bordered table-striped bg-white bg-opacity-75 shadow">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Ventajas del Método de Lagrange</th>
+                            <th>Desventajas del Método de Lagrange</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>No requiere resolver sistemas de ecuaciones. Cada polinomio se construye directamente
+                                con fórmulas explícitas.</td>
+                            <td>Si se añade un nuevo punto, es necesario recalcular todo el polinomio desde cero.</td>
+                        </tr>
+                        <tr>
+                            <td>Fácil de implementar computacionalmente con lenguajes de programación básicos.</td>
+                            <td>No es eficiente con muchos puntos, ya que el grado del polinomio crece y puede causar
+                                inestabilidad.</td>
+                        </tr>
+                        <tr>
+                            <td>Ideal para conjuntos pequeños de datos y para tareas educativas o demostrativas.</td>
+                            <td>El polinomio puede oscilar fuertemente entre los puntos si el conjunto es grande
+                                (fenómeno de Runge).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- USOS Y EJEMPLO - LAGRANGE -->
+        <div class="container mt-5">
+            <h4 class="fuente-semititulos color-text-rojo2 text-center">¿Cuándo se recomienda usarlo?</h4>
+            <p class="fuente-parrafos1 color-text-negro text-center">
+                Se recomienda utilizar el método de Lagrange cuando se tienen pocos datos experimentales conocidos y se
+                desea interpolar valores intermedios de forma precisa. Es útil en física, ingeniería y estadísticas
+                cuando se manejan pequeñas tablas de datos exactos.
+            </p>
+            <h5 class="text-center fuente-parrafos1 fw-bold mt-4 color-text-negro">Ejemplo teórico:</h5>
+            <p class="fuente-parrafos1 color-text-negro text-center">
+                Supón que conocemos el valor de una función en los puntos \( x = 1, 2, 3 \) con valores \( f(1)=2,
+                f(2)=4, f(3)=8 \). Si deseamos conocer un valor aproximado de la función en \( x = 2.5 \), podemos usar
+                el polinomio de Lagrange construido con esos puntos para estimarlo con buena precisión.
+            </p>
+        </div>
+
+        <!-- VIDEO LAGRANGE -->
+        <div class="row justify-content-center mt-4 mb-5">
+            <div class="col-md-6">
+                <div class="card h-100 shadow">
+                    <img src="{% static 'lagrange/images/lagrange-card.jpg' %}" class="card-img-top" alt="Lagrange">
+                    <div class="card-body">
+                        <h5 class="card-title fuente-semititulos color-text-negro fw-bolder text-center">¿Quieres
+                            aprender más acerca del método de Lagrange?</h5>
+                        <p class="d-inline fuente-parrafos1 color-text-negro">
+                            Este video te guiará paso a paso por la lógica detrás de la interpolación de Lagrange y cómo
+                            aplicarla correctamente.
+                        </p>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=CeYKhxfmneI&t=0s" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-primary fuente-parrafos2">Ver video explicativo 🎓</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MÉTODO DE TRAZADORES CÚBICOS -->
+        <div class="container-fluid justify-content-center text-center fuente-titulos2 color-text-negro mt-5">
+            <p>Metodo de Trazadores Cubicos</p>
+        </div>
+
+        <div class="p-3 mt-3">
+            <p class="fuente-parrafos1 color-text-negro text-justify">
+                Los trazadores cúbicos son un método de interpolación que utiliza polinomios de grado tres (cúbicos)
+                definidos por tramos. Cada intervalo entre dos puntos de datos se interpola con su propio polinomio
+                cúbico, de modo que la función resultante es suave, continua y con derivadas también continuas.
+            </p>
+            <p class="fuente-parrafos1 color-text-negro text-justify">
+                Este método es especialmente útil cuando se quiere evitar las oscilaciones bruscas entre puntos que
+                pueden ocurrir con polinomios de alto grado, como en Lagrange. Además, es ideal para representar
+                trayectorias físicas, superficies suaves o curvas con comportamiento natural.
+            </p>
+        </div>
+
+        <div class="p-3 text-center">
+            <p class="fuente-parrafos1 color-text-negro fw-bolder">¿Cómo funciona?</p>
+            <p class="fuente-parrafos1 color-text-negro">
+                Cada polinomio cúbico tiene la forma:
+                \[
+                S_i(x) = a_i + b_i(x - x_i) + c_i(x - x_i)^2 + d_i(x - x_i)^3
+                \]
+                Se impone que la función sea continua, al igual que sus derivadas primera y segunda. En la variante
+                natural, se exige además que la segunda derivada sea cero en los extremos del intervalo.
+            </p>
+        </div>
+
+        <!-- VENTAJAS Y DESVENTAJAS - TRAZADORES -->
+        <div class="container text-center mt-5">
+            <h4 class="fuente-semititulos color-text-rojo2">Ventajas y Desventajas</h4>
+            <div class="table-responsive mt-4">
+                <table class="table table-bordered table-striped bg-white bg-opacity-75 shadow">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Ventajas de los Trazadores Cúbicos</th>
+                            <th>Desventajas de los Trazadores Cúbicos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Proporcionan una curva suave con continuidad en la función y sus derivadas.</td>
+                            <td>Requiere resolver sistemas de ecuaciones lineales (más complejos que Lagrange).</td>
+                        </tr>
+                        <tr>
+                            <td>Evitan el fenómeno de Runge y las oscilaciones excesivas.</td>
+                            <td>Requiere conocimientos más avanzados para implementarlo correctamente.</td>
+                        </tr>
+                        <tr>
+                            <td>Son más precisos para conjuntos grandes de datos.</td>
+                            <td>Puede ser innecesario para conjuntos muy pequeños donde Lagrange es más simple.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- USOS Y EJEMPLO - TRAZADORES -->
+        <div class="container mt-5">
+            <h4 class="fuente-semititulos color-text-rojo2 text-center">¿Cuándo se recomienda usarlo?</h4>
+            <p class="fuente-parrafos1 color-text-negro text-center">
+                Es ideal cuando se requiere una representación gráfica fluida y precisa. Se usa mucho en animaciones,
+                modelado de superficies, gráficos de movimiento, y en ingeniería estructural cuando se necesita suavidad
+                entre segmentos.
+            </p>
+            <h5 class="text-center fuente-parrafos1 fw-bold mt-4 color-text-negro">Ejemplo teórico:</h5>
+            <p class="fuente-parrafos1 color-text-negro text-center">
+                Imagina que un robot debe moverse suavemente entre 6 puntos definidos en el espacio. Si usas
+                interpolación por trazadores cúbicos, su trayectoria será continua, suave y realista, evitando cambios
+                abruptos en su dirección.
+            </p>
+        </div>
+
+        <!-- VIDEO TRAZADORES -->
+        <div class="row justify-content-center mt-4 mb-5">
+            <div class="col-md-6">
+                <div class="card h-100 shadow">
+                    <img src="{% static 'lagrange/images/trazadores-card.png' %}" class="card-img-top"
+                        alt="Trazadores cúbicos">
+                    <div class="card-body">
+                        <h5 class="card-title fuente-semititulos color-text-negro fw-bolder text-center">¿Quieres
+                            aprender más acerca de los trazadores cúbicos?</h5>
+                        <p class="d-inline fuente-parrafos1 color-text-negro">
+                            Este video educativo te explicará paso a paso cómo se construyen y aplican los trazadores
+                            cúbicos naturales, ideal para complementar tu aprendizaje con Numerix.
+                        </p>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=Rs5lY_c0K9g&t=0s" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-primary fuente-parrafos2">No me lo digas 2 veces 🥳</a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <button onclick="irArriba()" id="btnArriba" class="btn btn-danger rounded-circle">↑</button>
+
+    <script>
+        window.onscroll = function () {
+            const boton = document.getElementById("btnArriba");
+            boton.style.display = (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) ? "block" : "none";
+        };
+
+        function irArriba() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    </script>
+
+    {% if messages %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            {% for message in messages %}
+            Swal.fire({
+                icon: 'success',
+                title: '{{ message|escapejs }}',
+                showConfirmButton: false,
+                timer: 2500
+            });
+            {% endfor %}
+        });
+    </script>
+    {% endif %}
+</body>
+
+</html>

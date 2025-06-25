@@ -1,0 +1,210 @@
+
+/*FONDOS********************************************************************************************************************************/
+.fondo-primario{
+    background-color: #c70404 !important;
+}
+
+
+/*BOTONES*******************************************************************************************************************************/
+
+.btn-custom-size {
+  padding: 15px 30px; /* damos alto al boton del navbar */
+  font-size: 1.1rem;  /* aumentamos un poco el tamaño del texto */
+  color: black;
+  width: 300px;
+}
+
+.btn-rojo{
+    background-color: #cc0404; 
+    color: white;
+    border-radius: 4px;
+    border: 0;
+}
+
+.btn-navbar{
+    transition: background-color 0.3s ease; /* transición suave para que no se vea brusca */
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+
+.btn-navbar:hover{
+    background-color: /*#13213C*/#cc0404; 
+    color: white; /* color del texto */
+}
+
+.btn-invitado-animacion{
+    transition: transform 0.3s ease;
+}
+
+.btn-invitado-animacion:hover{
+    transform: translateY(-15px); /* Se mueve 5px hacia arriba */
+}
+
+/*tamaño iconos botones*/
+.tamaño-icono-btn{
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+
+
+
+/*ETIQUETAS NORMALES*******************************************************************************************************************/
+
+
+body{
+    background: linear-gradient(to right, #1f2642, #12172b);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url("../images/fondo-abstracto.png") center/cover no-repeat;
+    opacity: 0;
+    animation: fondoFade 1.5s ease-in-out forwards; /* usa la animación */
+    z-index: -1;   /* queda detrás de todo */
+}
+
+
+
+/*ANIMACIONES******************************************************************************************************************************/
+
+@keyframes fondoFade {
+    to { opacity: 1; } /*animacion de aparicion*/
+}
+
+
+.animacion-aparicion{
+    opacity: 0; /* comienza invisible */
+    animation: fondoFade 2.5s ease-in-out forwards; 
+}
+
+
+
+/*FUENTES***********************************************************************************************************************************/
+
+/* creando familia de fuente para titulos */
+@font-face {
+    font-family: 'TitleFont'; 
+    src: url('../fonts/titulos.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* creando familia de fuente para semititulos */
+@font-face {
+    font-family: 'SemiTitle'; 
+    src: url('../fonts/semititulos.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* creando familia de fuente para texto de botones */
+@font-face {
+    font-family: 'btnText'; 
+    src: url('../fonts/botones.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* creando familia de fuente para texto de parrafos pequeños 1 */
+@font-face {
+    font-family: 'pText'; 
+    src: url('../fonts/botones.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Asignando una clase a la fuente de titulos para usarla */
+.fuente-titulos {
+    font-family: 'TitleFont', sans-serif;  
+    font-weight: normal;   
+    font-size: 18.5vw;
+}
+
+/* Asignando una clase a la fuente de titulos para usarla */
+.fuente-semititulos {
+    font-family: 'SemiTitle', sans-serif;   
+    font-weight: normal;   
+    font-size: 3rem;          
+}
+
+
+/* Asignando una clase a la fuente de botones para usarla */
+.fuente-btn {
+    font-family: 'btnText', sans-serif;   
+    font-weight: normal;   
+    font-size: 2vh;          
+}
+
+/* Asignando una clase a la fuente de parrafos 1 para usarla */
+.fuente-parrafos1 {
+    font-family: 'pText', sans-serif;  
+    font-weight: normal;   
+    font-size: 1.2rem;
+    color: black;
+}
+
+
+/*DISEÑO RESPONSIVE************************************************************************************************************************/
+
+/*MOVILES*/
+@media (max-width: 576px) { 
+    .btn-custom-size {
+        font-size: 0.9rem; /* más pequeño en móvil */
+        padding: 10px 20px; /* menos espacio */
+    }
+
+    .fuente-semititulos {
+        font-family: 'SemiTitle', sans-serif;   
+        font-weight: normal;   
+        font-size: 1.5rem;          
+    }
+
+    .margen-centrado{ /*centramos el contenido de home al hacer responsive la pagina*/
+        margin-top: 200px !important;
+    }
+
+    /*tamaño iconos botones*/
+    .tamaño-icono-btn{
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    .fuente-parrafos1 {
+        font-family: 'pText', sans-serif;  
+        font-weight: normal;   
+        font-size: 0.85rem;
+        color: black;
+    }
+}
+
+/*TABLETS*/
+@media (min-width: 576px) and (max-width: 1024px) {
+  .btn-custom-size {
+        font-size: 1rem; 
+        padding: 12px 25px; /* menos espacio */
+    }
+
+    .fuente-semititulos {
+        font-family: 'SemiTitle', sans-serif;   
+        font-weight: normal;   
+        font-size: 2rem;          
+    }
+
+    .fuente-parrafos1 {
+        font-family: 'pText', sans-serif;  
+        font-weight: normal;   
+        font-size: 1rem;
+        color: black;
+    }
+}
+
+
+/*MARGENES*******************************************************************************************************************/
+
+.mt-10{
+    margin-top: 3.1rem;
+}

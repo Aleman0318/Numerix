@@ -1,0 +1,43 @@
+{% load static %} <!--Esto carga la carpeta static por la jerarquia compleja-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numerix</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"
+        defer></script>
+</head>
+
+<body>
+    <div class="d-flex justify-content-center animacion-aparicion mt-5 margen-centrado">
+        <h1 class="fuente-titulos mt-5 fondo-blur">NumeriX</h1>
+    </div>
+    <div class="container-sm d-block justify-content-center animacion-aparicion text-center">
+        <p class="fuente-semititulos">“Tu espacio para dominar las matemáticas. Calcula, aprende y crece.”</p>
+        <p class="fuente-semititulos">¿Listo para simplificar las matemáticas?</p>
+        <div class="d-flex gap-3 mt-5 justify-content-center">
+            <a href="{% url 'registro' %}" class="btn btn-custom-size btn-navbar fuente-btn">SING UP</a>
+            <a href="{% url 'login' %}" class="btn-rojo btn-custom-size fuente-btn d-flex justify-content-center align-items-center">LOGIN</a>
+        </div>
+        <div class="d-flex gap-3 justify-content-center mt-5">
+            <a href="{% url 'lagrange_prueba' %}" class="fuente-parrafos1">¿Solo quieres probar? Entra como invitado</a>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+
+
+<!--<button
+    class="btn-custom-size btn-rojo fuente-btn w-100 d-flex align-items-center justify-content-center btn-invitado-animacion">
+    <img src="{% static 'home/images/incognito.png' %}" alt="icono-incognito" class="tamaño-icono-btn me-3">
+    Entrar como invitado
+</button>-->

@@ -1,0 +1,398 @@
+/*FONDOS********************************************************************************************************************************/
+.fondo-navbar {
+    background-color: #c12546 !important;
+}
+
+.fondo-navbar-azul {
+    background-color: #011cb6 !important;
+}
+
+
+.titulo-blur {
+    height: 120px;
+    width: 100%;
+}
+
+.fondo-blur {
+    backdrop-filter: blur(8px);
+    background: linear-gradient(to right, #ee7070, #d12828);
+    border-radius: 10px;
+    height: 15vh;
+}
+
+.fondo-blur-azul {
+    backdrop-filter: blur(8px);
+    background: linear-gradient(to right, #6a91fc, #1b38d8);
+    border-radius: 10px;
+    height: 15vh;
+}
+
+
+/*BOTONES*******************************************************************************************************************************/
+
+.btn-custom-size {
+    padding: 15px 30px;
+    /* damos alto al boton del navbar */
+    font-size: 1.1rem;
+    /* aumentamos un poco el tamaño del texto */
+    color: black;
+    width: 300px;
+}
+
+.btn-rojo {
+    background: linear-gradient(to right, #d32f2f, #ff4f1f);
+    background-size: 200%;
+    background-position: left;
+    color: white;
+    transition: background-position 0.4s ease, color 0.4s ease;
+}
+
+.btn-rojo:hover {
+    background-position: right;
+    color: white;
+}
+
+.btn-azul {
+    background: linear-gradient(to right, #6a91fc, #1b38d8);
+    background-size: 200%;
+    background-position: left;
+    color: white;
+    transition: background-position 0.4s ease, color 0.4s ease;
+}
+
+.btn-azul:hover {
+    background-position: right;
+    color: white;
+}
+
+.btn-navbar {
+    transition: background-color 0.3s ease;
+    /* transición suave para que no se vea brusca */
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+
+.btn-navbar:hover {
+    background-color:
+        /*#13213C*/
+        #cc0404;
+    color: white;
+    /* color del texto */
+}
+
+.btn-invitado-animacion {
+    transition: transform 0.3s ease;
+}
+
+.btn-invitado-animacion:hover {
+    transform: translateY(-15px);
+    /* Se mueve 5px hacia arriba */
+}
+
+/*tamaño iconos botones*/
+.tamaño-icono-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+
+.color-text-rojo {
+    color: #eb3a23 !important;
+}
+
+.contenedor-formula {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.contenedor-formula {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+#btnArriba {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: none;
+    /* oculto por defecto */
+    z-index: 999;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+
+.color-text-rojo2 {
+    color: #c12546 !important;
+}
+
+.color-text-blanco {
+    color: #ffffff !important;
+}
+
+.color-text-negro {
+    color: black !important;
+}
+
+
+/*ETIQUETAS NORMALES*******************************************************************************************************************/
+
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url("../images/fondo-franjas-azules.png") center/cover no-repeat;
+    opacity: 0;
+    animation: fondoFade 1.5s ease-in-out forwards;
+    /* usa la animación */
+    z-index: -1;
+    /* queda detrás de todo */
+}
+
+
+
+/*ANIMACIONES******************************************************************************************************************************/
+
+@keyframes fondoFade {
+    to {
+        opacity: 1;
+    }
+
+    /*animacion de aparicion*/
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.animacion-aparicion {
+    opacity: 0;
+    /* comienza invisible */
+    animation: fondoFade 1s ease-in-out forwards;
+}
+
+.animacion-color-txt:hover {
+    color: #fecf3f !important;
+    transition: color 0.3s ease;
+}
+
+
+
+
+/*FUENTES***********************************************************************************************************************************/
+
+/* creando familia de fuente para titulos */
+@font-face {
+    font-family: 'TitleFont';
+    src: url('../fonts/titulos.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* creando familia de fuente para titulos 2 (login) */
+@font-face {
+    font-family: 'TitleFont2';
+    src: url('../fonts/titulos2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* creando familia de fuente para semititulos */
+@font-face {
+    font-family: 'SemiTitle';
+    src: url('../fonts/semititulos.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* creando familia de fuente para texto de botones */
+@font-face {
+    font-family: 'btnText';
+    src: url('../fonts/botones.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* creando familia de fuente para texto de parrafos pequeños 1 */
+@font-face {
+    font-family: 'pText';
+    src: url('../fonts/botones.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* creando familia de fuente para parrafos2 */
+@font-face {
+    font-family: 'pText2';
+    src: url('../fonts/parrafos2.OTF') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Asignando una clase a la fuente de titulos para usarla */
+.fuente-titulos {
+    font-family: 'TitleFont', sans-serif;
+    font-weight: normal;
+    font-size: 2.5rem;
+}
+
+/* Asignando una clase a la fuente de titulos2 para usarla */
+.fuente-titulos2 {
+    font-family: 'TitleFont2', sans-serif;
+    font-weight: normal;
+    font-size: 4rem;
+    color: rgb(255, 255, 255);
+}
+
+
+/* Asignando una clase a la fuente de titulos para usarla */
+.fuente-semititulos {
+    font-family: 'SemiTitle', sans-serif;
+    font-weight: normal;
+    font-size: 3rem;
+}
+
+
+/* Asignando una clase a la fuente de botones para usarla */
+.fuente-btn {
+    font-family: 'btnText', sans-serif;
+    font-weight: normal;
+    font-size: 2vh;
+}
+
+/* Asignando una clase a la fuente de parrafos 1 para usarla */
+.fuente-parrafos1 {
+    font-family: 'pText', sans-serif;
+    font-weight: normal;
+    font-size: 1.2rem;
+    color: rgb(255, 255, 255);
+}
+
+/* Asignando una clase a la fuente de titulos2 para usarla */
+.fuente-parrafos2 {
+    font-family: 'pText2', sans-serif;
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+
+/*DISEÑO RESPONSIVE************************************************************************************************************************/
+
+/*MOVILES*/
+@media (max-width: 576px) {
+    .btn-custom-size {
+        font-size: 0.9rem;
+        /* más pequeño en móvil */
+        padding: 10px 20px;
+        /* menos espacio */
+    }
+
+    .fuente-semititulos {
+        font-family: 'SemiTitle', sans-serif;
+        font-weight: normal;
+        font-size: 1.5rem;
+    }
+
+    .margen-centrado {
+        /*centramos el contenido de home al hacer responsive la pagina*/
+        margin-top: 200px !important;
+    }
+
+    /*tamaño iconos botones*/
+    .tamaño-icono-btn {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    .fuente-parrafos1 {
+        font-family: 'pText', sans-serif;
+        font-weight: normal;
+        font-size: 0.85rem;
+        color: rgb(255, 255, 255);
+    }
+
+    .fuente-titulos2 {
+        font-family: 'TitleFont2', sans-serif;
+        font-weight: normal;
+        font-size: 2.5rem;
+        color: rgb(255, 255, 255);
+    }
+
+
+
+    /*CONTAINERS*/
+    .containerAccounts {
+        width: 80vw !important;
+        background-color: #54cc04;
+    }
+
+}
+
+/*TABLETS*/
+@media (min-width: 576px) and (max-width: 1024px) {
+    .btn-custom-size {
+        font-size: 1rem;
+        padding: 12px 25px;
+        /* menos espacio */
+    }
+
+    .fuente-semititulos {
+        font-family: 'SemiTitle', sans-serif;
+        font-weight: normal;
+        font-size: 2rem;
+    }
+
+    .fuente-parrafos1 {
+        font-family: 'pText', sans-serif;
+        font-weight: normal;
+        font-size: 1rem;
+        color: rgb(255, 255, 255);
+    }
+
+    .fuente-titulos2 {
+        font-family: 'TitleFont2', sans-serif;
+        font-weight: normal;
+        font-size: 3.5rem;
+    }
+
+    /*CONTAINERS*/
+    .containerAccounts {
+        width: 60vw !important;
+        background-color: #54cc04;
+    }
+}
+
+
+/*MARGENES*******************************************************************************************************************/
+
+.mt-10 {
+    margin-top: 3.1rem;
+}
+
+/*CONTAINERS*/
+.containerAccounts {
+    width: 45vw;
+    background-color: #fafafacb;
+    border-radius: 8px;
+}
+
+.color-link {
+    color: #970000 !important;
+}

@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro</title>
+    <link rel="icon" type="image/png" href="{% static 'login/images/favicon.png' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static 'login/css/style.css' %}" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"
+        defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+
+</head>
+
+<body>
+
+    <div class="containerAccounts m-auto p-4 shadow mt-5">
+        <div class="text-center mb-4">
+            <h1 class="fuente-titulos2 color-text-negro">REGISTRO</h1>
+        </div>
+
+        <form method="post" enctype="multipart/form-data" class="fuente-parrafos1">
+            {% csrf_token %}
+
+            <div class="row mb-3 text-center">
+                <div class="col">
+                    <label class="form-label fuente-parrafos1 color-text-negro">Nombres</label>
+                    {{ form.first_name }}
+                    {% if form.first_name.errors %}
+                    <div class="text-danger small">{{ form.first_name.errors }}</div>
+                    {% endif %}
+                </div>
+                <div class="col">
+                    <label class="form-label fuente-parrafos1 color-text-negro">Apellidos</label>
+                    {{ form.last_name }}
+                    {% if form.last_name.errors %}
+                    <div class="text-danger small">{{ form.last_name.errors }}</div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3 text-center">
+                <label class="form-label fuente-parrafos1 color-text-negro">Correo electrónico</label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                <div class="text-danger small">{{ form.email.errors }}</div>
+                {% endif %}
+            </div>
+
+            <!-- Contraseña -->
+            <div class="mb-3 text-center">
+                <label class="form-label fuente-parrafos1 color-text-negro">Contraseña</label>
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                <div class="text-danger small">{{ form.password1.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="mb-3 text-center fuente-parrafos1">
+                <label class="form-label color-text-negro">Confirmar contraseña</label>
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                <div class="text-danger small">{{ form.password2.errors }}</div>
+                {% endif %}
+            </div>
+
+            <!-- Carrera -->
+            <div class="mb-3 text-center fuente-parrafos1 color-text-negro">
+                <label class="form-label">Carrera universitaria</label>
+                {{ form.carrera }}
+                {% if form.carrera.errors %}
+                <div class="text-danger small">{{ form.carrera.errors }}</div>
+                {% endif %}
+            </div>
+
+            <!-- Carné y Ciclo en una fila -->
+            <div class="row mb-3 text-center fuente-parrafos1 color-text-negro">
+                <div class="col">
+                    <label class="form-label">Número de carné</label>
+                    {{ form.carnet }}
+                    {% if form.carnet.errors %}
+                    <div class="text-danger small">{{ form.carnet.errors }}</div>
+                    {% endif %}
+                </div>
+                <div class="col">
+                    <label class="form-label fuente-parrafos1 color-text-negro">Ciclo</label>
+                    {{ form.ciclo }}
+                    {% if form.ciclo.errors %}
+                    <div class="text-danger small">{{ form.ciclo.errors }}</div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="mb-4 text-center">
+                <label class="form-label fuente-parrafos1 color-text-negro">Seleccionar foto de Perfil</label>
+                <div class="d-flex justify-content-center color-text-negro">
+                    {{ form.foto_perfil }}
+                </div>
+                {% if form.foto_perfil.errors %}
+                <div class="text-danger small color-text-negro">{{ form.foto_perfil.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary w-100">Guardar</button>
+            </div>
+
+            <div class="text-center mt-2">
+                <a href="{% url 'login' %}" style="text-decoration: none;" class="color-link">¿Ya posees una cuenta? →
+                    Logueate</a>
+            </div>
+            <div class="text-center text-muted mt-3">
+                <a href="{% url 'inicio' %}" style="text-decoration: none;" class="color-link">Volver a Inicio</a>
+            </div>
+
+            {% if form.non_field_errors %}
+            <div class="text-danger mt-3 text-center">
+                {{ form.non_field_errors }}
+            </div>
+            {% endif %}
+        </form>
+    </div>
+</body>
+
+</html>

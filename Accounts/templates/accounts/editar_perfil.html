@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi Perfil</title>
+    <link rel="icon" type="image/png" href="{% static 'login/images/favicon.png' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'login/css/style.css' %}" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous" defer></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fondo-navbar-azul">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active fuente-parrafos2 color-text-blanco mt-1 animacion-color-txt"
+                            href="{% url 'ver_creditos' %}">Creditos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active fuente-parrafos2 color-text-blanco mt-1 animacion-color-txt"
+                            href="{% url 'ver_historial' %}">Historial</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active fuente-parrafos2 color-text-blanco mt-1 animacion-color-txt"
+                            href="{% url 'ver_perfil' %}">Perfil</a>
+                    </li>
+                    <li class="nav-item dropdown fuente-parrafos2 color-text-blanco mt-1 animacion-color-txt">
+                        <a class="nav-link dropdown-toggle color-text-blanco animacion-color-txt" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Métodos Numéricos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'formulario_lagrange' %}">Interpolación de
+                                    Lagrange</a></li>
+                            <li><a class="dropdown-item" href="{% url 'formulario_trazadores' %}">Trazadores Cúbicos</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'documentacion_metodos' %}">Documentación</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex" role="">
+                    <a class="nav-link active fuente-parrafos2 color-text-blanco mt-1 animacion-color-txt"
+                        aria-current="page" href="{% url 'logout' %}">Cerrar Sesión</a>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="containerAccounts m-auto p-4 shadow mt-5">
+        <div class="text-center mb-4">
+            <h1 class="fuente-titulos2 color-text-negro">MI PERFIL</h1>
+
+            <label for="id_foto_perfil" style="cursor: pointer;">
+                <img id="preview_foto"
+                    src="{% if usuario.foto_perfil %}{{ usuario.foto_perfil.url }}{% else %}{% static 'login/images/avatar.jpg' %}{% endif %}"
+                    class="rounded-circle mx-auto d-block mt-3" width="140" height="140"
+                    style="object-fit: cover; transition: 0.3s;" />
+            </label>
+
+            <div class="mt-2">
+                <small class="text-muted ">Haz clic en la imagen para cambiarla</small>
+            </div>
+        </div>
+        <form method="post" enctype="multipart/form-data" class="fuente-parrafos1">
+            {% csrf_token %}
+            <input type="file" id="id_foto_perfil" name="foto_perfil" accept="image/*" class="d-none">
+
+            <div class="row mb-3 text-center">
+                <div class="col">
+                    <label class="form-label color-text-negro">Nombres</label>
+                    {{ form.first_name }}
+                </div>
+                <div class="col">
+                    <label class="form-label color-text-negro">Apellidos</label>
+                    {{ form.last_name }}
+                </div>
+            </div>
+
+            <div class="mb-3 text-center">
+                <label class="form-label color-text-negro">Correo electrónico</label>
+                {{ form.email }}
+            </div>
+
+            <div class="mb-3 text-center">
+                <label class="form-label color-text-negro">Carrera universitaria</label>
+                {{ form.carrera }}
+            </div>
+
+            <div class="row mb-3 text-center">
+                <div class="col">
+                    <label class="form-label color-text-negro">Carné</label>
+                    {{ form.carnet }}
+                </div>
+                <div class="col">
+                    <label class="form-label color-text-negro">Ciclo</label>
+                    {{ form.ciclo }}
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-azul w-100">Guardar cambios</button>
+                <a href="{% url 'ver_perfil' %}" class="btn w-100 mt-2 btn-azul">Cancelar Edicion</a>
+            </div>
+        </form>
+
+
+    </div>
+
+    <script>
+        document.getElementById('id_foto_perfil').addEventListener('change', function (e) {
+            const archivo = e.target.files[0];
+            if (archivo) {
+                const lector = new FileReader();
+                lector.onload = function (evento) {
+                    document.getElementById('preview_foto').src = evento.target.result;
+                };
+                lector.readAsDataURL(archivo);
+            }
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Entornos virtuales
+env/
+venv/
+ENV/
+.venv/
+*.env
+
+# Archivos de base de datos local
+*.sqlite3
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de compilación
+*.log
+
+# Archivos de Railway
+/staticfiles/
